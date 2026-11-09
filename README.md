@@ -1,26 +1,26 @@
-# Sistema Escolar – Proyecto (Frontend + Backend)
+# School System – Project (Frontend + Backend)
 
-## 📖 Descripción General
-El proyecto *Sistema Escolar* está enfocado a un sistema académico pensado en accesibilidad de contenidos escolares, gestión de eventos y usuarios, mediante el uso de autenticación de usuarios por roles.
+## 📖 General Description
+The School System project is an academic platform focused on providing accessible school content, event management, and user administration through role-based authentication.
 
-El sistema aplica operaciones de CRUD en el backend usando una API en *Django REST, vinculando directamente al localhost y desplegando un hosting profesional. A su vez, la **WebApp* (diseño de frontend) se realizó aplicando conocimientos en *Angular*, permitiendo tener una aplicación web atractiva, 100% responsiva e intuitiva al usuario.
+The system handles backend CRUD operations via a Django REST API, integrated with a local development environment and prepared for professional deployment. Meanwhile, the WebApp (frontend design) was built using Angular, resulting in an attractive, 100% responsive, and user-friendly web application.
 
-## ✨ Funcionalidades Principales
+## ✨ Core Features
 
-- *Autenticación y sesión:* Login con correo/contraseña; respuesta con token y rol; manejo de cookies en frontend; logout que invalida el token.
-- *Usuarios:* CRUD de administradores, maestros y alumnos con validaciones específicas.
-- *Eventos:* Alta, listado, edición y eliminación con fecha/hora, público objetivo, responsable, cupo y descripción.
-- *Métricas:* Gráficas con totales por rol.
-- *Navegación:* Layouts de autenticación y dashboard; protección de rutas públicas/privadas.
+- *Authentication & Session:* Email/password login; token and role response; frontend cookie management; token-invalidating logout.
+- *Users:* CRUD operations for administrators, teachers, and students with specific validations.
+- *Events:* Creation, listing, editing, and deletion including date/time, target audience, responsible person, capacity, and description.
+- *Metrics:* Charts displaying totals grouped by user role.
+- *Navigation:* Authentication and dashboard layouts; public and private route protection.
 
-## 📋 Requisitos
+## 📋 Prerequisites
 
-- *Node.js:* Versión 18 o mayor (y npm)
-- *Angular CLI:* Versión 16.2.11 (vía npx)
+- *Node.js:* Version 18 or higher (includes npm)
+- *Angular CLI:* Version 16.2.11 (via npx)
 - *Python:* 3.12
 - *MySQL:* 5.7 / 8.0
 
-## 🛠 Tecnologías
+## 🛠 Technologies
 
 ### Frontend
 - Angular 16
@@ -38,108 +38,106 @@ El sistema aplica operaciones de CRUD en el backend usando una API en *Django RE
 - pymysql
 - rest_framework.authtoken
 
-## 📂 Estructura del Proyecto
+## 📂 Project Structure
 
 - *Frontend (Angular):* dev-sistema-escolar-webapp_fdrd
 - *Backend (Django):* dev_sistema_escolar_api_fdrd
 
 ---
 
-## 🚀 Ejecución
+## 🚀 Getting Started
 
-> *Nota:* Se deben ejecutar tanto frontend como backend por separado (en terminales distintas). Accede a la carpeta correspondiente para la ejecución de cada localhost.
+> *Nota:* Both the frontend and backend must be run separately (in different terminal windows). Navigate to the respective folder to run each local server(localhost).
 > * *Backend:* Puerto 8000
 > * *Frontend:* Puerto 4200
 
 ## 1. Backend (Django)
 
-*Preparación del entorno:*
+*Environment Setup:*
 
-bash
-# Crear el entorno virtual
+# Create the virtual environment
 python -m venv .venv
 
-# Activar el entorno virtual 
+# Activate the virtual environment 
 .\.venv\Scripts\activate
 
-# Instalar dependencias
+# Install dependencies
 pip install -r requirements.txt
 
-#Se crean las Migraciones:
+# Create migrations:
 python manage.py makemigrations
 
-#Se aplica migracion los datos:
+# Apply migrations to the database:
 python manage.py migrate
 
-#Finalmente se corre el servidor:
+# Finally, run the server:
 python manage.py runserver
 URL: http://127.0.0.1:8000/
 
-###Configuracion base de datos.
-bash 
-#Crear base de datos desde MYSQL: 
+###Database Configuration.
+# Create the database in MySQL: 
 CREATE DATABASE dev_sistema_escolar_db CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
 
-#Archivo de cliente en my.cnf :
+#Client configuration (my.cnf / settings):
 host=127.0.0.1
 port=3306
 database=dev_sistema_escolar_db
-user=root.
+user=root
 password=
 default-character-set=utf8mb4
 
-###EndPoints Principales
+###Main Endpoints
 dev_sistema_escolar_api/dev_sistema_escolar_api/urls.py:13-48
-Administración Django: GET /admin-django/
-Versión API: GET /version/
+Django Admin: GET /admin-django/
+
+API Version: GET /version/
 
 ####Admins:
-  * Crear: POST /admin/
-  * Borrar: DELETE /admin/<id>/
-  * Listar: GET /lista-admins/
-  * Total usuarios: GET /total-usuarios/
+  * Create: POST /admin/
+  * Delete: DELETE /admin/<id>/
+  * List: GET /lista-admins/
+  * Total Users: GET /total-usuarios/
 
-####Alumnos:
-  * Crear: POST /alumnos/
-  * Borrar: DELETE /alumnos/<id>/
-  * Listar: GET /lista-alumnos/
+####Students (Alumnos):
+  * Create: POST /alumnos/
+  * Delete: DELETE /alumnos/<id>/
+  * List: GET /lista-alumnos/
   
-####Maestros:
-  * Crear: POST /maestros/
-  * Borrar: DELETE /maestros/<id>/
-  * Listar: GET /lista-maestros/
+####Teachers (Maestros):
+  * Create: POST /maestros/
+  * Delete: DELETE /maestros/<id>/
+  * List: GET /lista-maestros/
   
 ####Auth:
   * Login: POST /login/
   * Logout: POST /logout/
   
-####Eventos:
-  * Crear: POST /eventos/
-  * Borrar: DELETE /eventos/<id>/
-  * Listar: GET /lista-eventos/
+####Events:
+  * Create: POST /eventos/
+  * Delete: DELETE /eventos/<id>/
+  * List: GET /lista-eventos/
 
 ##2.Frontend (Angular)
 
-###*Gestión de versiones y Dependencias*
-
+###*Version Management and Dependencies*
 bash
-# Seleccionar versión de Node con NVM
+# Select Node version with NVM
 nvm ls
 nvm use 22.14.0
 
-# Instalar dependencias del proyecto
+# Install project dependencies
 npm install
 
-###*Ejecucion*
+###*Execution*
 bash
-#Ejecutar el servidor de desarrollo
+# Run the development server
 ng serve
 URL de la WebApp: http://localhost:4200/
 
-##🛣 Rutas de Frontend
-Definidas en: src/app/app-routing.module.ts
+##🛣 Frontend Routes
+Defined in: src/app/app-routing.module.ts
 
-####Público:
+####Public:
 -login
 -registro-usuarios
 -registro-usuarios/:rol/:id
@@ -154,7 +152,7 @@ Definidas en: src/app/app-routing.module.ts
 -registro-eventos
 -registro-eventos/:id
 
-##⚠ Notas Importantes
--Asegura que el backend corre en http://127.0.0.1:8000 para que la WebApp funcione correctamente con ng serve.
--Usa Authorization: Bearer <token> en las peticiones protegidas.
--Para producción, ajusta environment.prod.ts y ALLOWED_HOSTS / CORS en la API.
+##⚠ Important Notes
+-Ensure the backend is running at http://127.0.0.1:8000 for the WebApp to communicate correctly with ng serve
+-Use Authorization: Bearer <token> in protected requests.
+-For production, update environment.prod.ts and configure ALLOWED_HOSTS / CORS in the API.
